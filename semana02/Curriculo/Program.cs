@@ -1,54 +1,33 @@
-
-
 using System;
+using System.Collections.Generic;
 
 class Program
 {
-    
-        static void Main()
-        //digitar nota
+    static void Main(string[] args)
     {
-        Console.Write("Digite sua nota numérica: ");
-        int nota = Convert.ToInt32(Console.ReadLine());
+        // 1. Criação e configuração do primeiro emprego
+        Emprego emprego1 = new Emprego();
+        emprego1._cargo = "Engenheiro de Software";
+        emprego1._empresa = "Microsoft";
+        emprego1._anoInicio = 2019;
+        emprego1._anoFim = 2022;
 
-        string letra;
+        // 2. Criação e configuração do segundo emprego
+        Emprego emprego2 = new Emprego();
+        emprego2._cargo = "Gerente";
+        emprego2._empresa = "Apple";
+        emprego2._anoInicio = 2022;
+        emprego2._anoFim = 2023;
 
-        // Determina a letra da nota
-        if (nota >= 90)
-            letra = "A";
-        else if (nota >= 80)
-            letra = "B";
-        else if (nota >= 70)
-            letra = "C";
-        else if (nota >= 60)
-            letra = "D";
-        else
-            letra = "F";
+        // 3. Criação e configuração do currículo
+        Curriculo meuCurriculo = new Curriculo();
+        meuCurriculo._nomePessoa = "José Carlos";
 
-        // Determina se foi aprovado
-        if (nota >= 70)
-            Console.WriteLine("Parabéns, você foi aprovado!");
-        else
-            Console.WriteLine("Não foi desta vez, continue tentando!");
+        // Adicionando os empregos à lista do currículo
+        meuCurriculo._empregos.Add(emprego1);
+        meuCurriculo._empregos.Add(emprego2);
 
-        // Desafio adicional: adicionar + ou -
-        string sinal = "";
-
-        if (letra != "A" && letra != "F") // não existe A+ nem F+ ou F-
-        {
-            int ultimoDigito = nota % 10;
-
-            if (ultimoDigito >= 7)
-                sinal = "+";
-            else if (ultimoDigito < 3)
-                sinal = "-";
-        }
-        else if (letra == "A" && nota < 93) // só existe A-
-        {
-            sinal = "-";
-        }
-
-        // Exibe a nota final
-        Console.WriteLine($"Sua nota conceitual é: {letra}{sinal}");
+        // 4. Exibindo o currículo completo usando o método Exibir
+        meuCurriculo.Exibir();
     }
 }
